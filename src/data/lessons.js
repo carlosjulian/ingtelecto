@@ -793,6 +793,50 @@ export const lessons = [
     ],
     sim: "project",
   },
+  {
+    id: "esp32",
+    title: "Conoce el ESP32: El salto a Wi-Fi e IoT",
+    cardTitle: "12. Conoce el<br />ESP32",
+    thumb: "esp32",
+    heading: "ESP32 DevKit V1",
+    lede: "El ESP32 es el hermano mayor y conectado del Arduino Uno: procesador dual-core a 240 MHz de 32 bits, Wi-Fi y Bluetooth nativos. Observa ambas placas lado a lado y descubre el salto cualitativo hacia el Internet de las Cosas (IoT).",
+    features: [
+      ["chip", "Procesador dual-core Xtensa 32-bit @ 240 MHz (vs 16 MHz del Uno)"],
+      ["bulb", "Conectividad inalámbrica Wi-Fi 802.11 b/g/n y Bluetooth 4.2 BLE"],
+      ["gear", "520 KB de SRAM y 4 MB de memoria Flash (vs 2 KB y 32 KB del Uno)"],
+    ],
+    pinout: [
+      ["D23 · D22 · D21", "GPIO / I²C", "Pines digitales multipropósito y bus I²C nativo.", "#2a56a3"],
+      ["TX0/RX0 · TX2/RX2", "UART Serial", "Dos interfaces seriales por hardware independientes.", "#1aa3a1"],
+      ["D34 · D35 · VN · VP", "Solo Entrada", "Entradas analógicas/digitales sin resistencias de pull-up.", "#d64a3a"],
+      ["TOUCH 0–9", "Sensor capacitivo", "10 pines con detección táctil sin componentes externos.", "#8a63c9"],
+      ["3V3 · VIN · GND", "Alimentación", "Lógica nativa a 3.3 V; regulador AMS1117 para entrada 5 V.", "#2f3547"],
+      ["EN · BOOT", "Arranque y Reset", "EN reinicia la CPU; BOOT activa modo de descarga en ROM.", "#8e9094"],
+    ],
+    example: [
+      "El ESP32 es 100% compatible con el IDE y las librerías de Arduino.",
+      "La librería nativa <code>WiFi.h</code> permite conectar la placa a tu red local en solo tres líneas de código.",
+      "A diferencia de los 5 V del Arduino Uno, las entradas y salidas del ESP32 operan a <b>3.3 V</b>.",
+      "Presiona <b>Ejecutar programa</b> para ver la secuencia de inicialización del microcontrolador y la conexión Wi-Fi en el monitor serial.",
+    ],
+    specs: [
+      ["Microcontrolador", "Espressif ESP-WROOM-32 (Xtensa Dual-Core 32-bit)"],
+      ["Frecuencia de reloj", "240 MHz (hasta 600 DMIPS)"],
+      ["Memoria SRAM", "520 KB internos"],
+      ["Memoria Flash", "4 MB SPI externa"],
+      ["Tensión lógica", "3.3 V (requiere divisor resistivo para señales de 5V)"],
+      ["Conectividad inalámbrica", "Wi-Fi 802.11 b/g/n (150 Mbps) + Bluetooth v4.2 BR/EDR y BLE"],
+      ["Canales ADC", "18 canales ADC de 12 bits (rango 0–4095)"],
+      ["Salidas DAC", "2 canales DAC de 8 bits para señales analógicas puras"],
+    ],
+    code: "#include <WiFi.h>\n\nconst char* ssid = \"Laboratorio-IoT\";\nconst char* password = \"clave_secreta\";\nconst int LED_PIN = 2;\n\nvoid setup() {\n  Serial.begin(115200);\n  pinMode(LED_PIN, OUTPUT);\n\n  Serial.println(\"Iniciando ESP32 DevKit V1...\");\n  WiFi.begin(ssid, password);\n\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(300);\n    Serial.print(\".\");\n  }\n\n  Serial.println(\"\\nWiFi Conectado!\");\n  Serial.print(\"IP asignada: \");\n  Serial.println(WiFi.localIP());\n}\n\nvoid loop() {\n  digitalWrite(LED_PIN, HIGH);\n  delay(500);\n  digitalWrite(LED_PIN, LOW);\n  delay(500);\n}",
+    callouts: [
+      {"anchor": "part:esp32", "icon": "chip", "wide": true, "title": "ESP32 DevKit V1", "body": "Microcontrolador de 32 bits con Wi-Fi, Bluetooth y antena MIFA integrada.", "x": 280, "y": -330, "w": 260, "side": "bottom", "at": 140, "leg": 35, "ring": true},
+      {"anchor": "mcu", "icon": "chip", "title": "Arduino Uno R3", "body": "Compara: 8 bits vs 32 bits, 16 MHz vs 240 MHz, 2 KB vs 520 KB RAM.", "x": -260, "y": -340, "w": 260, "side": "bottom", "at": 90},
+      {"anchor": "digital", "icon": "pins", "title": "Interconexión Serial", "body": "Líneas de 5V (rojo), GND (azul marino) y datos D2 (azul) comunicando ambas placas.", "x": 40, "y": 140, "w": 260, "side": "top", "at": 120, "leg": 40, "ring": true},
+    ],
+    sim: "esp32",
+  },
 ];
 
 /**

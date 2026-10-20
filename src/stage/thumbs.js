@@ -2,6 +2,7 @@
  * Renderizador offscreen para generación en tiempo real de miniaturas 3D de lecciones.
  */
 import { A, D, Jn, Mt, N as N_1, O, R, S, Z, Zn, _, c, jn, kt, l, m, o, p, s, st, v, vt, w, x, yt } from "./kit.js";
+import { buildEsp32Board } from "./esp32Kit.js";
 const T = Math.PI / 180;
 function E(e, t, n = 0.35) {
     let i = document.createElement(`canvas`);
@@ -205,6 +206,20 @@ function board({ renderer, board }) {
         ]
     };
 }
+function esp32() {
+    let group = buildEsp32Board();
+    return {
+        group,
+        az: -28,
+        el: 36,
+        pad: 1.15,
+        shadow: [
+            52,
+            34,
+            0
+        ]
+    };
+}
 const z = {
     board,
     led,
@@ -216,7 +231,8 @@ const z = {
     buzzer,
     motor,
     servo,
-    gears
+    gears,
+    esp32
 };
 function B(e, group, r, a, o, pad) {
     e.position.set(Math.sin(r * T) * Math.cos(a * T) * 300, Math.sin(a * T) * 300, Math.cos(r * T) * Math.cos(a * T) * 300);

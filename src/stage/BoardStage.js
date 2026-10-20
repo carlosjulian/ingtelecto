@@ -4,6 +4,7 @@
  */
 import { melodies as n_1 } from "../data/helpers.js";
 import { playTone as t } from "../audio/sound.js";
+import { buildEsp32Board } from "./esp32Kit.js";
 import { $ as $_1, $n as $n_1, A, An as An_1, At as At_1, B, Bt as Bt_1, C, Cn as Cn_1, Ct as Ct_1, D, Dt as Dt_1, E, Et as Et_1, F, Fn as Fn_1, Ft as Ft_1, G, Gn as Gn_1, H, I, In as In_1, J, Jn as Jn_1, K, Kn as Kn_1, Ln as Ln_1, M as M_1, Mn as Mn_1, Mt as Mt_1, N, Nn as Nn_1, Nt as Nt_1, O, Ot as Ot_1, P, Q as Q_1, Qn as Qn_1, R, Rn as Rn_1, S, Sn as Sn_1, St, T, Tt as Tt_1, U, Un as Un_1, V as V_1, Vn as Vn_1, W, Wn as Wn_1, X as X_1, Xn as Xn_1, Y as Y_1, Yn as Yn_1, Z as Z_1, Zn as Zn_1, _, _n as _n_1, _t as _t_1, a, ar as ar_1, at, b, bt, c, cr as cr_1, ct, d, dt, er as er_1, et, f, ft as ft_1, g, gn as gn_1, gt, h, ht, i, ir as ir_1, jn as jn_1, jt as jt_1, k, kn as kn_1, kt as kt_1, lr as lr_1, mt as colorSpace, n as n_2, nr as nr_1, nt, o, or as or_1, ot as ot_1, p, pt, q, qn as qn_1, r, rr as rr_1, rt as rt_1, s, sr as sr_1, st, t as t_1, tr as tr_1, tt, u, ut, v, vn as vn_1, vt, w, wn as wn_1, wt as wt_1, x, xn as xn_1, xt, y, yn as yn_1, yt, z as z_1, zn as zn_1, zt as zt_1 } from "./kit.js";
 function Ct() {
     let e = null;
@@ -17098,6 +17099,34 @@ const Ta = {
                 leanB: 0
             })
         ]
+    },
+    esp32: {
+        parts: [
+            {
+                id: `esp32`,
+                build: () => {
+                    const board = buildEsp32Board();
+                    board.userData.part = {
+                        name: `ESP32 DevKit V1`,
+                        desc: `Microcontrolador de 32 bits a 240 MHz con Wi-Fi 802.11 b/g/n y Bluetooth dual.`
+                    };
+                    return board;
+                },
+                at: new Jn_1(56, -3.2, 0)
+            },
+            $(`w-5v-esp`, `5V`, new Jn_1(43.3, -3.2, 17.78), Q.red, {
+                arch: 22,
+                lean: 0.15
+            }),
+            $(`w-gnd-esp`, `GND`, new Jn_1(43.3, -3.2, 15.24), Q.navy, {
+                arch: 18,
+                lean: 0.15
+            }),
+            $(`w-d2-esp`, `D2`, new Jn_1(43.3, -3.2, -2.54), Q.blue, {
+                arch: 26,
+                lean: 0.2
+            })
+        ]
     }
 };
 const Ea = {
@@ -17268,6 +17297,20 @@ const Ea = {
             -5.2,
             159.9,
             92.3
+        ]
+    },
+    esp32: {
+        target: [
+            28,
+            0,
+            0
+        ],
+        zoom: 6.2,
+        frame: [
+            0,
+            -1.7,
+            140,
+            80
         ]
     }
 };
@@ -18145,6 +18188,35 @@ function Ba(n, r) {
             stop () {
                 m.clear();
                 readout(null);
+            }
+        };
+    }
+    if (n === `esp32`) {
+        out(`[ESP32] Booting Xtensa Dual-Core @ 240 MHz...`);
+        out(`[ESP32] Flash: 4 MB SPI, SRAM: 520 KB`);
+        out(`[WiFi] Connecting to AP 'Laboratorio-IoT'......`);
+        let timer = 0;
+        let last = f;
+        let connected = false;
+        return {
+            update (r) {
+                timer += r - last;
+                last = r;
+                m.update(r);
+                if (timer > 1400 && !connected) {
+                    connected = true;
+                    out(`[WiFi] Connected! IP: 192.168.1.185`);
+                    out(`[HTTP] Web server listening on http://192.168.1.185:80/`);
+                    out(`[GPIO 2] Blinking onboard blue status LED`);
+                }
+                let blink = Math.floor(timer / 500) % 2 === 0;
+                ka(leds.L, blink);
+                return true;
+            },
+            stop () {
+                m.clear();
+                out(`[ESP32] Sketch detenido.`);
+                ka(leds.L, false);
             }
         };
     }

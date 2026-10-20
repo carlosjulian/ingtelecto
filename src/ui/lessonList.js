@@ -12,6 +12,7 @@ const CARD_WIDTHS = {
   motor: 300,
   servo: 280,
   project: 286,
+  esp32: 300,
 };
 
 const THUMB_WIDTHS = {
@@ -26,6 +27,7 @@ const THUMB_WIDTHS = {
   motor: 104,
   servo: 96,
   gears: 92,
+  esp32: 110,
 };
 
 const makeSvgPath = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}" /></svg>`;
