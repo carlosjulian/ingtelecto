@@ -287,9 +287,18 @@ function selectLesson(lessonId) {
   stage?.setLesson(target.id, { values: state.values });
   sidebar.refresh();
 
-  history.replaceState(null, '', `#${target.id}`);
+  if (location.hash.replace(/^#/, '') !== target.id) {
+    history.pushState(null, '', `#${target.id}`);
+  }
   document.title = `${target.title} · Aprender Arduino`;
 }
+
+window.addEventListener('hashchange', () => {
+  const hashId = location.hash.replace(/^#/, '');
+  if (hashId && hashId !== state.lesson.id) {
+    selectLesson(hashId);
+  }
+});
 
 async function runSketch() {
   if (!stage) return;
