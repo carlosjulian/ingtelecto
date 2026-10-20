@@ -11,6 +11,7 @@ import { Viewbar } from './ui/viewbar.js';
 import { Minimap } from './ui/minimap.js';
 import { PartInspector } from './ui/inspector.js';
 import { CalloutOverlay } from './ui/callouts.js';
+import { ensureAudioContext } from './audio/sound.js';
 
 // Constantes de diseño para escala responsiva
 const DESIGN_W = 1672;
@@ -39,17 +40,6 @@ let isAppReady = false;
 let stage = null;
 let minimapStartTime = null;
 let minimapTimer = 0;
-let audioContext = null;
-
-function ensureAudioContext() {
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (AudioCtx) {
-    audioContext ??= new AudioCtx();
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
-  }
-}
 
 /**
  * Escala el lienzo responsivo (.artboard) y redibuja las trazas decorativas de PCB.
@@ -506,7 +496,7 @@ async function startApp() {
   ]).catch(() => {});
 
   loader.step('Cargando motor 3D...', 0.18);
-  const { BoardStage } = await import('/assets/stage-btHE6-0n.js');
+  const { BoardStage } = await import('./stage/BoardStage.js');
 
   loader.step('Ensamblando circuito 3D...', 0.32);
   await nextFrames(2);
@@ -591,7 +581,7 @@ async function startApp() {
   loader.step('Generando miniaturas de lecciones...', 0.6);
 
   try {
-    const { renderThumbnails } = await import('/assets/thumbs-gagaX1E4.js');
+    const { renderThumbnails } = await import('./stage/thumbs.js');
     await renderThumbnails(document.querySelectorAll('[data-thumb]'), {
       renderer: stage.renderer,
       environment: stage.scene.environment,
