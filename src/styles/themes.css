@@ -1,119 +1,96 @@
 /**
  * Sistema de Temas y Variantes de Diseño para Aprender Arduino / Ingtelecto.
- * Soporta Dark Obsidian, Swiss Blueprint y Workbench Studio.
+ * Identidades 100% claras y de alta legibilidad (sin fondos negros):
+ * 1. Laboratorio Cálido (Papel Técnico / Kraft Original)
+ * 2. Swiss Blueprint (Plano Técnico de Ingeniería en Azul Cobalto)
+ * 3. Nordic Minimal (Estudio Contemporáneo Blanco Puro y Esmeralda)
  */
 
 /* ==========================================================================
-   TEMA 1: DARK OBSIDIAN / CYBER-LAB (Estudio de Hardware de Alto Rendimiento)
+   TEMA 1: LABORATORIO CÁLIDO / PAPEL TÉCNICO (Artesanal & Hardware Físico)
    ========================================================================== */
-html[data-theme="dark-obsidian"] {
-  --bg: #090d14;
-  --bg-deep: #05070a;
-  --sidebar: #0f141f;
-  --card: #131924;
-  --card-soft: rgba(19, 25, 36, 0.88);
-  --code-bg: #0d121b;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-soft: rgba(255, 255, 255, 0.06);
-  --navy: #e6edf8;
-  --navy-2: #8fa0bd;
-  --ink: #cbd5e1;
-  --muted: #8292a8;
-  --faint: #475569;
-  --teal: #00e676;
-  --teal-deep: #00b0ff;
-  --trace: #1e293b;
-  --track: #141c28;
-  --kw: #38bdf8;
-  --fn: #fb923c;
-  --gutter: #475569;
-  color-scheme: dark;
+html[data-theme="laboratorio-calido"] {
+  --bg: #f6eddd;
+  --bg-deep: #efe3d1;
+  --sidebar: #e9dcca;
+  --card: #f9f2e5;
+  --card-soft: rgba(250, 244, 233, 0.97);
+  --code-bg: #f8f0e3;
+  --line: #cec0ad;
+  --line-soft: #e2d7c7;
+  --navy: #18213d;
+  --navy-2: #24304a;
+  --ink: #4f535b;
+  --muted: #696d74;
+  --faint: #ada293;
+  --teal: #1aa3a1;
+  --teal-deep: #3f7f8e;
+  --trace: #d3bea3;
+  --track: #e3d8ca;
+  --kw: #2a56a3;
+  --fn: #c0652d;
+  --gutter: #aaa59d;
+  color-scheme: light;
 }
 
-html[data-theme="dark-obsidian"] body {
+html[data-theme="laboratorio-calido"] body {
   background-color: var(--bg);
+  background-image: radial-gradient(120% 90% at 45% 45%, rgba(255, 250, 240, 0.55), transparent 60%);
   color: var(--ink);
 }
 
-html[data-theme="dark-obsidian"] .sidebar {
-  background: linear-gradient(180deg, #131a28, #0a0e16);
-  box-shadow: 1px 0 0 var(--line);
+html[data-theme="laboratorio-calido"] .sidebar {
+  background: var(--sidebar);
+  border-right: 1.5px solid var(--line);
 }
 
-html[data-theme="dark-obsidian"] .card,
-html[data-theme="dark-obsidian"] .info-card,
-html[data-theme="dark-obsidian"] .code-card,
-html[data-theme="dark-obsidian"] .progress-card,
-html[data-theme="dark-obsidian"] .clock,
-html[data-theme="dark-obsidian"] .lesson-card,
-html[data-theme="dark-obsidian"] .flyout {
-  background-color: var(--card-soft);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--line);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+html[data-theme="laboratorio-calido"] .card,
+html[data-theme="laboratorio-calido"] .info-card,
+html[data-theme="laboratorio-calido"] .code-card,
+html[data-theme="laboratorio-calido"] .progress-card,
+html[data-theme="laboratorio-calido"] .clock,
+html[data-theme="laboratorio-calido"] .lesson-card,
+html[data-theme="laboratorio-calido"] .flyout {
+  background: var(--card-soft);
+  border: 1.5px solid var(--line);
+  box-shadow: 0 4px 16px rgba(40, 30, 20, 0.08);
 }
 
-html[data-theme="dark-obsidian"] .callout {
-  background: rgba(15, 22, 33, 0.92);
-  border: 1px solid rgba(0, 230, 118, 0.35);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+html[data-theme="laboratorio-calido"] .callout {
+  background: #fffdf9;
+  border: 1.5px solid var(--line);
+  box-shadow: 0 6px 18px rgba(40, 30, 20, 0.1);
 }
 
-html[data-theme="dark-obsidian"] .callout h3 {
-  color: #00e676;
+html[data-theme="laboratorio-calido"] .callout h3 {
+  color: var(--navy);
 }
 
-html[data-theme="dark-obsidian"] .callout-anchor {
-  border-color: #00e676;
-  background: rgba(0, 230, 118, 0.2);
-  box-shadow: 0 0 12px rgba(0, 230, 118, 0.6);
+html[data-theme="laboratorio-calido"] .leaders path {
+  stroke: var(--navy);
 }
 
-html[data-theme="dark-obsidian"] .leaders path {
-  stroke: rgba(0, 230, 118, 0.55);
-}
-
-html[data-theme="dark-obsidian"] .viewbar {
-  background: rgba(19, 25, 36, 0.85);
-  border: 1px solid var(--line);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-html[data-theme="dark-obsidian"] .viewbar button {
-  color: #94a3b8;
-}
-
-html[data-theme="dark-obsidian"] .viewbar button:hover {
-  color: #00e676;
-}
-
-html[data-theme="dark-obsidian"] .lesson {
-  background: rgba(19, 25, 36, 0.85);
-  border: 1px solid var(--line);
-}
-
-html[data-theme="dark-obsidian"] .lesson.is-on {
-  border-color: #00e676;
-  box-shadow: 0 0 16px rgba(0, 230, 118, 0.25);
+html[data-theme="laboratorio-calido"] .lesson.is-on {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(26, 163, 161, 0.25);
 }
 
 /* ==========================================================================
-   TEMA 2: SWISS BLUEPRINT / PRECISION INDUSTRIAL (Plano Técnico de Taller)
+   TEMA 2: SWISS BLUEPRINT / PLANO TÉCNICO DE INGENIERÍA (Blanco & Cobalto)
    ========================================================================== */
 html[data-theme="swiss-blueprint"] {
-  --bg: #f3f6fa;
+  --bg: #f4f7fb;
   --bg-deep: #e8edf5;
   --sidebar: #ffffff;
   --card: #ffffff;
-  --card-soft: rgba(255, 255, 255, 0.95);
-  --code-bg: #f8fafc;
-  --line: #cbd5e1;
-  --line-soft: #e2e8f0;
-  --navy: #0f172a;
-  --navy-2: #1e293b;
-  --ink: #334155;
-  --muted: #64748b;
+  --card-soft: rgba(255, 255, 255, 0.98);
+  --code-bg: #eef3f9;
+  --line: #0047bb;
+  --line-soft: #cbd5e1;
+  --navy: #0a192f;
+  --navy-2: #1e3a8a;
+  --ink: #1e293b;
+  --muted: #475569;
   --faint: #94a3b8;
   --teal: #0047bb;
   --teal-deep: #003087;
@@ -121,7 +98,7 @@ html[data-theme="swiss-blueprint"] {
   --track: #dbeafe;
   --kw: #0047bb;
   --fn: #b91c1c;
-  --gutter: #94a3b8;
+  --gutter: #64748b;
   --sans: "Barlow", -apple-system, sans-serif;
   color-scheme: light;
 }
@@ -129,10 +106,15 @@ html[data-theme="swiss-blueprint"] {
 html[data-theme="swiss-blueprint"] body {
   background-color: var(--bg);
   background-image:
-    linear-gradient(rgba(0, 71, 187, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 71, 187, 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(rgba(0, 71, 187, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 71, 187, 0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
   color: var(--navy);
+}
+
+html[data-theme="swiss-blueprint"] .sidebar {
+  background: #ffffff;
+  border-right: 1.5px solid var(--line);
 }
 
 html[data-theme="swiss-blueprint"] .card,
@@ -142,6 +124,7 @@ html[data-theme="swiss-blueprint"] .progress-card,
 html[data-theme="swiss-blueprint"] .clock,
 html[data-theme="swiss-blueprint"] .lesson-card,
 html[data-theme="swiss-blueprint"] .flyout {
+  background: #ffffff;
   border-radius: 4px;
   border: 1.5px solid #0047bb;
   box-shadow: 4px 4px 0 rgba(0, 71, 187, 0.12);
@@ -150,7 +133,7 @@ html[data-theme="swiss-blueprint"] .flyout {
 html[data-theme="swiss-blueprint"] .callout {
   border-radius: 3px;
   border: 1.5px solid #0047bb;
-  box-shadow: 3px 3px 0 rgba(0, 71, 187, 0.15);
+  box-shadow: 3px 3px 0 rgba(0, 71, 187, 0.18);
   background: #ffffff;
 }
 
@@ -161,14 +144,26 @@ html[data-theme="swiss-blueprint"] .callout h3 {
   text-transform: uppercase;
 }
 
+html[data-theme="swiss-blueprint"] .callout-anchor {
+  border-color: #0047bb;
+  background: rgba(0, 71, 187, 0.15);
+}
+
 html[data-theme="swiss-blueprint"] .leaders path {
   stroke: #0047bb;
   stroke-dasharray: 4 2;
 }
 
+html[data-theme="swiss-blueprint"] .viewbar {
+  background: #ffffff;
+  border: 1.5px solid #0047bb;
+  box-shadow: 3px 3px 0 rgba(0, 71, 187, 0.12);
+}
+
 html[data-theme="swiss-blueprint"] .lesson {
   border-radius: 4px;
   border: 1.5px solid #cbd5e1;
+  background: #ffffff;
 }
 
 html[data-theme="swiss-blueprint"] .lesson.is-on {
@@ -177,89 +172,99 @@ html[data-theme="swiss-blueprint"] .lesson.is-on {
 }
 
 /* ==========================================================================
-   TEMA 3: WORKBENCH STUDIO (Estación de Prototipado en 3 Columnas)
+   TEMA 3: NORDIC MINIMAL / ESTUDIO CONTEMPORÁNEO (Blanco Puro & Esmeralda)
    ========================================================================== */
-html[data-theme="workbench-studio"] {
-  --bg: #11141a;
-  --bg-deep: #0c0e13;
-  --sidebar: #161b24;
-  --card: #1a202c;
-  --card-soft: rgba(26, 32, 44, 0.9);
-  --code-bg: #0f131a;
-  --line: rgba(255, 255, 255, 0.1);
-  --line-soft: rgba(255, 255, 255, 0.05);
-  --navy: #f8fafc;
-  --navy-2: #94a3b8;
-  --ink: #cbd5e1;
-  --muted: #7e8b9f;
-  --faint: #4b5563;
-  --teal: #38bdf8;
-  --teal-deep: #0284c7;
-  --trace: #1e293b;
-  --track: #151c27;
-  --kw: #38bdf8;
-  --fn: #fbbf24;
-  --gutter: #4b5563;
-  color-scheme: dark;
+html[data-theme="nordic-minimal"] {
+  --bg: #f8fafc;
+  --bg-deep: #f1f5f9;
+  --sidebar: #ffffff;
+  --card: #ffffff;
+  --card-soft: rgba(255, 255, 255, 0.96);
+  --code-bg: #f1f5f9;
+  --line: #e2e8f0;
+  --line-soft: #f1f5f9;
+  --navy: #0f172a;
+  --navy-2: #334155;
+  --ink: #334155;
+  --muted: #64748b;
+  --faint: #94a3b8;
+  --teal: #0d9488;
+  --teal-deep: #0f766e;
+  --trace: #ccfbf1;
+  --track: #f0fdfa;
+  --kw: #2563eb;
+  --fn: #d97706;
+  --gutter: #94a3b8;
+  color-scheme: light;
 }
 
-html[data-theme="workbench-studio"] body {
+html[data-theme="nordic-minimal"] body {
   background-color: var(--bg);
+  background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+  color: var(--ink);
 }
 
-/* Layout 3 Columnas en Pantallas Anchas */
-@media (min-width: 1200px) {
-  html[data-theme="workbench-studio"]:not(.compact) .artboard {
-    display: grid !important;
-    grid-template-columns: 280px minmax(0, 1.4fr) 420px !important;
-    grid-template-rows: 64px 1fr 140px !important;
-    grid-template-areas:
-      "brand   stage   status"
-      "lessons stage   info"
-      "lessons stage   code" !important;
-    gap: 16px !important;
-    padding: 16px !important;
-    height: 100vh !important;
-    overflow: hidden !important;
-  }
+html[data-theme="nordic-minimal"] .sidebar {
+  background: #ffffff;
+  border-right: 1px solid var(--line);
+  box-shadow: 2px 0 12px rgba(15, 23, 42, 0.03);
+}
 
-  html[data-theme="workbench-studio"]:not(.compact) .lessons {
-    grid-area: lessons !important;
-    height: 100% !important;
-    overflow-y: auto !important;
-    border-right: 1px solid var(--line) !important;
-    padding-right: 12px !important;
-  }
+html[data-theme="nordic-minimal"] .card,
+html[data-theme="nordic-minimal"] .info-card,
+html[data-theme="nordic-minimal"] .code-card,
+html[data-theme="nordic-minimal"] .progress-card,
+html[data-theme="nordic-minimal"] .clock,
+html[data-theme="nordic-minimal"] .lesson-card,
+html[data-theme="nordic-minimal"] .flyout {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+}
 
-  html[data-theme="workbench-studio"]:not(.compact) .lesson-list {
-    flex-direction: column !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    gap: 8px !important;
-  }
+html[data-theme="nordic-minimal"] .callout {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+}
 
-  html[data-theme="workbench-studio"]:not(.compact) .lesson {
-    width: 100% !important;
-  }
+html[data-theme="nordic-minimal"] .callout h3 {
+  color: var(--teal);
+  font-weight: 700;
+}
 
-  html[data-theme="workbench-studio"]:not(.compact) .info-card {
-    grid-area: info !important;
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-  }
+html[data-theme="nordic-minimal"] .callout-anchor {
+  border-color: var(--teal);
+  background: rgba(13, 148, 136, 0.15);
+}
 
-  html[data-theme="workbench-studio"]:not(.compact) .code-card {
-    grid-area: code !important;
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-  }
+html[data-theme="nordic-minimal"] .leaders path {
+  stroke: var(--teal);
+  stroke-width: 1.5;
+}
 
-  html[data-theme="workbench-studio"]:not(.compact) .stage {
-    grid-area: stage !important;
-    height: 100% !important;
-    border: 1px solid var(--line) !important;
-    border-radius: 8px !important;
-  }
+html[data-theme="nordic-minimal"] .viewbar {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+html[data-theme="nordic-minimal"] .viewbar button:hover {
+  color: var(--teal);
+}
+
+html[data-theme="nordic-minimal"] .lesson {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+html[data-theme="nordic-minimal"] .lesson.is-on {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2), 0 4px 12px rgba(13, 148, 136, 0.1);
 }

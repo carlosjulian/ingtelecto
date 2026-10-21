@@ -147,10 +147,9 @@ export class Sidebar {
             <small>Selecciona la dirección estética de la interfaz</small>
           </span>
           <select class="theme-select" data-theme-select style="width:100%; padding:8px 10px; border-radius:6px; background:var(--card); color:var(--ink); border:1px solid var(--line); font-family:var(--cond); font-size:14px; cursor:pointer;">
-            <option value="dark-obsidian">1. Dark Obsidian (Cyber-Lab Pro)</option>
-            <option value="swiss-blueprint">2. Swiss Blueprint (Plano Técnico)</option>
-            <option value="workbench-studio">3. Workbench Studio (3 Columnas)</option>
-            <option value="classic">4. Clásico (Papel / Beige original)</option>
+            <option value="laboratorio-calido">1. Laboratorio Cálido (Papel Técnico / Kraft)</option>
+            <option value="swiss-blueprint">2. Swiss Blueprint (Plano Técnico Cobalto)</option>
+            <option value="nordic-minimal">3. Nordic Minimal (Estudio Blanco y Esmeralda)</option>
           </select>
         </li>
         ${row('labels', 'Etiquetas y llamadas 3D', 'Indicadores sobre pines y componentes')}
@@ -182,7 +181,7 @@ export class Sidebar {
     } else if (kind === 'settings') {
       const themeSelect = f.querySelector('[data-theme-select]');
       if (themeSelect) {
-        themeSelect.value = document.documentElement.dataset.theme || 'dark-obsidian';
+        themeSelect.value = document.documentElement.dataset.theme || 'laboratorio-calido';
         themeSelect.addEventListener('change', (e) => {
           const val = e.target.value;
           document.documentElement.dataset.theme = val;

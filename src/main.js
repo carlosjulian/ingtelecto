@@ -486,10 +486,19 @@ function showWebGlUnavailable() {
   finishStartup();
 }
 
-// Inicialización del tema visual
+// Inicialización del tema visual (Garantizado 100% fondos claros)
+const VALID_THEMES = ['laboratorio-calido', 'swiss-blueprint', 'nordic-minimal'];
 const urlTheme = new URLSearchParams(location.search).get('tema') || new URLSearchParams(location.search).get('theme');
-const activeTheme = urlTheme || localStorage.getItem('ingtelecto:theme') || 'dark-obsidian';
+let savedTheme = localStorage.getItem('ingtelecto:theme');
+
+// Sanitización contra temas oscuros legacy
+if (savedTheme === 'dark-obsidian' || savedTheme === 'workbench-studio' || !VALID_THEMES.includes(savedTheme)) {
+  savedTheme = null;
+}
+
+const activeTheme = (urlTheme && VALID_THEMES.includes(urlTheme)) ? urlTheme : (savedTheme || 'laboratorio-calido');
 document.documentElement.dataset.theme = activeTheme;
+localStorage.setItem('ingtelecto:theme', activeTheme);
 
 // Inicialización de la vista
 infoCard.setLesson(state.lesson);
