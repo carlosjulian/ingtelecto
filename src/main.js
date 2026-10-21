@@ -486,6 +486,11 @@ function showWebGlUnavailable() {
   finishStartup();
 }
 
+// Inicialización del tema visual
+const urlTheme = new URLSearchParams(location.search).get('tema') || new URLSearchParams(location.search).get('theme');
+const activeTheme = urlTheme || localStorage.getItem('ingtelecto:theme') || 'dark-obsidian';
+document.documentElement.dataset.theme = activeTheme;
+
 // Inicialización de la vista
 infoCard.setLesson(state.lesson);
 codeCard.setLesson(state.lesson, state.values);

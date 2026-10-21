@@ -141,6 +141,18 @@ export class Sidebar {
     return `
       <header><h2>Configuración</h2></header>
       <ul class="fly-list">
+        <li style="padding: 12px 14px; border-bottom: 1px solid var(--line-soft);">
+          <span class="fly-text" style="display:block; margin-bottom:8px;">
+            <b>Identidad Visual / Tema</b>
+            <small>Selecciona la dirección estética de la interfaz</small>
+          </span>
+          <select class="theme-select" data-theme-select style="width:100%; padding:8px 10px; border-radius:6px; background:var(--card); color:var(--ink); border:1px solid var(--line); font-family:var(--cond); font-size:14px; cursor:pointer;">
+            <option value="dark-obsidian">1. Dark Obsidian (Cyber-Lab Pro)</option>
+            <option value="swiss-blueprint">2. Swiss Blueprint (Plano Técnico)</option>
+            <option value="workbench-studio">3. Workbench Studio (3 Columnas)</option>
+            <option value="classic">4. Clásico (Papel / Beige original)</option>
+          </select>
+        </li>
         ${row('labels', 'Etiquetas y llamadas 3D', 'Indicadores sobre pines y componentes')}
         ${row('grid', 'Cuadrícula de suelo', 'Líneas guía tenues debajo de la placa')}
         ${row('autoRotate', 'Rotación automática', 'Giro suave continuo cuando la vista está en reposo')}
@@ -168,6 +180,16 @@ export class Sidebar {
         });
       });
     } else if (kind === 'settings') {
+      const themeSelect = f.querySelector('[data-theme-select]');
+      if (themeSelect) {
+        themeSelect.value = document.documentElement.dataset.theme || 'dark-obsidian';
+        themeSelect.addEventListener('change', (e) => {
+          const val = e.target.value;
+          document.documentElement.dataset.theme = val;
+          localStorage.setItem('ingtelecto:theme', val);
+        });
+      }
+
       f.querySelectorAll('[data-setting]').forEach((input) => {
         input.addEventListener('change', () => {
           this.api.setSetting(input.dataset.setting, input.checked);
