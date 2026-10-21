@@ -186,6 +186,9 @@ export class Sidebar {
           const val = e.target.value;
           document.documentElement.dataset.theme = val;
           localStorage.setItem('ingtelecto:theme', val);
+          document.querySelectorAll('.theme-btn').forEach((b) => {
+            b.classList.toggle('is-active', b.dataset.themeVal === val);
+          });
         });
       }
 

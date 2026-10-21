@@ -500,6 +500,28 @@ const activeTheme = (urlTheme && VALID_THEMES.includes(urlTheme)) ? urlTheme : (
 document.documentElement.dataset.theme = activeTheme;
 localStorage.setItem('ingtelecto:theme', activeTheme);
 
+// Sincronización de la barra flotante de diseño
+const themeToolbar = document.getElementById('theme-toolbar');
+const updateThemePills = (theme) => {
+  if (!themeToolbar) return;
+  themeToolbar.querySelectorAll('.theme-btn').forEach((btn) => {
+    btn.classList.toggle('is-active', btn.dataset.themeVal === theme);
+  });
+};
+if (themeToolbar) {
+  updateThemePills(activeTheme);
+  themeToolbar.querySelectorAll('.theme-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.themeVal;
+      document.documentElement.dataset.theme = selected;
+      localStorage.setItem('ingtelecto:theme', selected);
+      updateThemePills(selected);
+      const sideSelect = document.querySelector('[data-theme-select]');
+      if (sideSelect) sideSelect.value = selected;
+    });
+  });
+}
+
 // Inicialización de la vista
 infoCard.setLesson(state.lesson);
 codeCard.setLesson(state.lesson, state.values);

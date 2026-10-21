@@ -65,6 +65,14 @@
 
     <!-- inert (not hidden) while the loading screen covers it -->
     <div id="app" class="artboard" inert>
+      <!-- Selector flotante de diseño interactivo -->
+      <aside class="theme-toolbar" id="theme-toolbar" aria-label="Comparador interactivo de diseño">
+        <span class="theme-toolbar-label">🎨 Tema:</span>
+        <button type="button" class="theme-btn" data-theme-val="laboratorio-calido">🪵 1. Laboratorio Cálido</button>
+        <button type="button" class="theme-btn" data-theme-val="swiss-blueprint">📐 2. Swiss Blueprint</button>
+        <button type="button" class="theme-btn" data-theme-val="nordic-minimal">❄️ 3. Nordic Minimal</button>
+      </aside>
+
       <svg class="traces" id="traces" aria-hidden="true"></svg>
 
       <!-- Sidebar -->
