@@ -18249,7 +18249,7 @@ function Ha(leds, t = 1100) {
 }
 const Ua = `M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.59-6.64 7.59H.47l8.6-9.83L0 1.15h7.6l5.24 6.93zm-1.29 19.5h2.04L6.49 3.24H4.3z`;
 const Wa = `#bba78a`;
-const Ga = `x.com/DilumSanjaya`;
+const Ga = `x.com/ingtelecto`;
 const Ka = 900;
 const qa = 0.8;
 function Ja() {
