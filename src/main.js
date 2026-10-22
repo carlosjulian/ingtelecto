@@ -486,41 +486,8 @@ function showWebGlUnavailable() {
   finishStartup();
 }
 
-// Inicialización del tema visual (Garantizado 100% fondos claros)
-const VALID_THEMES = ['laboratorio-calido', 'swiss-blueprint', 'nordic-minimal'];
-const urlTheme = new URLSearchParams(location.search).get('tema') || new URLSearchParams(location.search).get('theme');
-let savedTheme = localStorage.getItem('ingtelecto:theme');
-
-// Sanitización contra temas oscuros legacy
-if (savedTheme === 'dark-obsidian' || savedTheme === 'workbench-studio' || !VALID_THEMES.includes(savedTheme)) {
-  savedTheme = null;
-}
-
-const activeTheme = (urlTheme && VALID_THEMES.includes(urlTheme)) ? urlTheme : (savedTheme || 'laboratorio-calido');
-document.documentElement.dataset.theme = activeTheme;
-localStorage.setItem('ingtelecto:theme', activeTheme);
-
-// Sincronización de la barra flotante de diseño
-const themeToolbar = document.getElementById('theme-toolbar');
-const updateThemePills = (theme) => {
-  if (!themeToolbar) return;
-  themeToolbar.querySelectorAll('.theme-btn').forEach((btn) => {
-    btn.classList.toggle('is-active', btn.dataset.themeVal === theme);
-  });
-};
-if (themeToolbar) {
-  updateThemePills(activeTheme);
-  themeToolbar.querySelectorAll('.theme-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const selected = btn.dataset.themeVal;
-      document.documentElement.dataset.theme = selected;
-      localStorage.setItem('ingtelecto:theme', selected);
-      updateThemePills(selected);
-      const sideSelect = document.querySelector('[data-theme-select]');
-      if (sideSelect) sideSelect.value = selected;
-    });
-  });
-}
+// Identidad visual oficial: Swiss Blueprint (Ingeniería y Precisión)
+document.documentElement.dataset.theme = 'swiss-blueprint';
 
 // Inicialización de la vista
 infoCard.setLesson(state.lesson);
